@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Memory Card Game</title>
+    <link rel="stylesheet" href="stylesheets/whitespace-reset.css" />
+    <link rel="stylesheet" href="stylesheets/app.css" />
+    <link href="https://fonts.googleapis.com/css?family=Rhodium+Libre" rel="stylesheet">
+  
+    <script src="javascripts/jquery.js"></script>
+    <script src="javascripts/handlebars.js"></script>
+    <script src="javascripts/app.js"></script>
+  </head>
+  <body>
+    <main>
+      <header>
+          <div class='title_text'>MEMORY</div>
+          <div class='memory'>
+            <div class="cover" data-order="card1"></div><img class="title_card" data-order="card1" src="https://deckofcardsapi.com/static/img/KH.png" />
+            <div class="cover" data-order="card2"></div><img class="title_card" data-order="card2" src="https://deckofcardsapi.com/static/img/0D.png" />
+            <div class="cover" data-order="card3"></div><img class="title_card" data-order="card3" src="https://deckofcardsapi.com/static/img/4C.png" />
+            <div class="cover" data-order="card4"></div><img class="title_card" data-order="card4" src="https://deckofcardsapi.com/static/img/0H.png" />
+            <div class="cover" data-order="card5"></div><img class="title_card" data-order="card5" src="https://deckofcardsapi.com/static/img/KS.png" />
+            <div class="cover" data-order="card6"></div><img class="title_card" data-order="card6" src="https://deckofcardsapi.com/static/img/4D.png" />
+          </div>
+      </header>
+      <label>Gameboard Size:</label>
+      <select id="game_size">
+        <option value='52'>Full Deck (52 Cards)</option>
+        <option value='26'>Half Deck (26 Cards)</option>
+      </select>
+      <button type="text">New Game</button>
+      <div id="rules">
+        <h3>Rules:</h3><div class="tab"><a href="#">Show</a></div>
+        <ul>
+          <li>
+            Memory is a game of trying to match cards with the same number (A, 2, 3...10) or face (J, Q, K). 
+          </li>
+          <li>
+            The user will first make a selection by clicking on one of the covered cards.
+          </li>
+          <li>
+            This selected card will stay exposed until you select the next card.  
+          </li>
+          <li>  
+            If the following selection is a match then both cards will disappear from the board.
+          </li>
+          <li>  
+            If the following selection is NOT a match then both cards will return to being covered.
+          </li>
+          <li>
+            The user will continue this way until the board is cleared of all cards.  Good Luck!
+          </li>
+        </ul>
+      </div>
+      <h2>Select Gameboard Size and click 'New Game' to begin</h2>
+      <div id="guesses">Guesses: 0</div>
+      <div id="pairs">Pairs: 0</div>
+      <div id="game_board"></div>
+      <footer>
+        <a href="https://deckofcardsapi.com/">Data provided by deckofcardsapi.com</a>
+      </footer>
+
+      <script id="cards_template" type="text/x-handlebars-template">
+        {{#each cards}}
+          {{> card_template}}
+        {{/each}}
+      </script>
+
+      <script id="card_template" type="text/x-handlebars-template">
+        <div class="shade" data-card={{value}} data-suit={{suit}}><img class="playing_card" data-card={{value}} data-suit={{suit}} src={{image}} /></div>
+      </script>
+    </main>
+    
+  </body>
+</html>
+
+<!-- <div class="shade" data-card="card1"><img data-card="card1" src="https://deckofcardsapi.com/static/img/KH.png" /></div>
+<div class="shade" data-card="card2"><img data-card="card2" src="https://deckofcardsapi.com/static/img/0D.png" /></div>
+<div class="shade" data-card="card3"><img data-card="card3" src="https://deckofcardsapi.com/static/img/4C.png" /></div>
+<div class="shade" data-card="card4"><img data-card="card4" src="https://deckofcardsapi.com/static/img/0H.png" /></div>
+<div class="shade" data-card="card5"><img data-card="card5" src="https://deckofcardsapi.com/static/img/KS.png" /></div>
+<div class="shade" data-card="card6"><img data-card="card6" src="https://deckofcardsapi.com/static/img/4D.png" /></div>
+<div class="shade" data-card="card1"><img data-card="card1" src="https://deckofcardsapi.com/static/img/KH.png" /></div>
+<div class="shade" data-card="card2"><img data-card="card2" src="https://deckofcardsapi.com/static/img/0D.png" /></div>
+<div class="shade" data-card="card3"><img data-card="card3" src="https://deckofcardsapi.com/static/img/4C.png" /></div>
+<div class="shade" data-card="card4"><img data-card="card4" src="https://deckofcardsapi.com/static/img/0H.png" /></div>
+<div class="shade" data-card="card5"><img data-card="card5" src="https://deckofcardsapi.com/static/img/KS.png" /></div>
+<div class="shade" data-card="card6"><img data-card="card6" src="https://deckofcardsapi.com/static/img/4D.png" /></div>
+<div class="shade" data-card="card6"><img data-card="card6" src="https://deckofcardsapi.com/static/img/4D.png" /></div>
+<div class="shade" data-card="card1"><img data-card="card1" src="https://deckofcardsapi.com/static/img/KH.png" /></div>
+<div class="shade" data-card="card2"><img data-card="card2" src="https://deckofcardsapi.com/static/img/0D.png" /></div>
+<div class="shade" data-card="card3"><img data-card="card3" src="https://deckofcardsapi.com/static/img/4C.png" /></div>
+<div class="shade" data-card="card4"><img data-card="card4" src="https://deckofcardsapi.com/static/img/0H.png" /></div>
+<div class="shade" data-card="card5"><img data-card="card5" src="https://deckofcardsapi.com/static/img/KS.png" /></div>
+<div class="shade" data-card="card6"><img data-card="card6" src="https://deckofcardsapi.com/static/img/4D.png" /></div>
+<div class="shade" data-card="card1"><img data-card="card1" src="https://deckofcardsapi.com/static/img/KH.png" /></div>
+<div class="shade" data-card="card2"><img data-card="card2" src="https://deckofcardsapi.com/static/img/0D.png" /></div>
+<div class="shade" data-card="card3"><img data-card="card3" src="https://deckofcardsapi.com/static/img/4C.png" /></div>
+<div class="shade" data-card="card4"><img data-card="card4" src="https://deckofcardsapi.com/static/img/0H.png" /></div>
+<div class="shade" data-card="card5"><img data-card="card5" src="https://deckofcardsapi.com/static/img/KS.png" /></div>
+<div class="shade" data-card="card6"><img data-card="card6" src="https://deckofcardsapi.com/static/img/4D.png" /></div>
+<div class="shade" data-card="card6"><img data-card="card6" src="https://deckofcardsapi.com/static/img/4D.png" /></div>
+<div class="shade" data-card="card1"><img data-card="card1" src="https://deckofcardsapi.com/static/img/KH.png" /></div>
+<div class="shade" data-card="card2"><img data-card="card2" src="https://deckofcardsapi.com/static/img/0D.png" /></div>
+<div class="shade" data-card="card3"><img data-card="card3" src="https://deckofcardsapi.com/static/img/4C.png" /></div>
+<div class="shade" data-card="card4"><img data-card="card4" src="https://deckofcardsapi.com/static/img/0H.png" /></div>
+<div class="shade" data-card="card5"><img data-card="card5" src="https://deckofcardsapi.com/static/img/KS.png" /></div>
+<div class="shade" data-card="card6"><img data-card="card6" src="https://deckofcardsapi.com/static/img/4D.png" /></div>
+<div class="shade" data-card="card1"><img data-card="card1" src="https://deckofcardsapi.com/static/img/KH.png" /></div>
+<div class="shade" data-card="card2"><img data-card="card2" src="https://deckofcardsapi.com/static/img/0D.png" /></div>
+<div class="shade" data-card="card3"><img data-card="card3" src="https://deckofcardsapi.com/static/img/4C.png" /></div>
+<div class="shade" data-card="card4"><img data-card="card4" src="https://deckofcardsapi.com/static/img/0H.png" /></div>
+<div class="shade" data-card="card5"><img data-card="card5" src="https://deckofcardsapi.com/static/img/KS.png" /></div>
+<div class="shade" data-card="card6"><img data-card="card6" src="https://deckofcardsapi.com/static/img/4D.png" /></div>
+<div class="shade" data-card="card6"><img data-card="card6" src="https://deckofcardsapi.com/static/img/4D.png" /></div>
+<div class="shade" data-card="card1"><img data-card="card1" src="https://deckofcardsapi.com/static/img/KH.png" /></div>
+<div class="shade" data-card="card2"><img data-card="card2" src="https://deckofcardsapi.com/static/img/0D.png" /></div>
+<div class="shade" data-card="card3"><img data-card="card3" src="https://deckofcardsapi.com/static/img/4C.png" /></div>
+<div class="shade" data-card="card4"><img data-card="card4" src="https://deckofcardsapi.com/static/img/0H.png" /></div>
+<div class="shade" data-card="card5"><img data-card="card5" src="https://deckofcardsapi.com/static/img/KS.png" /></div>
+<div class="shade" data-card="card6"><img data-card="card6" src="https://deckofcardsapi.com/static/img/4D.png" /></div>
+<div class="shade" data-card="card1"><img data-card="card1" src="https://deckofcardsapi.com/static/img/KH.png" /></div>
+<div class="shade" data-card="card2"><img data-card="card2" src="https://deckofcardsapi.com/static/img/0D.png" /></div>
+<div class="shade" data-card="card3"><img data-card="card3" src="https://deckofcardsapi.com/static/img/4C.png" /></div>
+<div class="shade" data-card="card4"><img data-card="card4" src="https://deckofcardsapi.com/static/img/0H.png" /></div>
+<div class="shade" data-card="card5"><img data-card="card5" src="https://deckofcardsapi.com/static/img/KS.png" /></div>
+<div class="shade" data-card="card6"><img data-card="card6" src="https://deckofcardsapi.com/static/img/4D.png" /></div>
+<div class="shade" data-card="card6"><img data-card="card6" src="https://deckofcardsapi.com/static/img/4D.png" /></div> -->

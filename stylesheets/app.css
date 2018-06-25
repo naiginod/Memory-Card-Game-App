@@ -1,0 +1,182 @@
+html {
+  height: 100%;
+}
+
+body {
+  font: normal 20px 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: #3b5e3b;
+  background: linear-gradient(to bottom, #bbb, #fff);
+  height: 100%;
+  margin: 0;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+main {
+  margin: 0 20px;
+  height: 100vh;
+}
+
+header {
+  text-align: center;
+}
+
+.title_text {
+  font-family: 'Rhodium Libre', serif;
+  position: absolute;
+  top: 10px;
+  left: 355px;
+  color: #fff;
+  font-size: 98px;
+  letter-spacing: 22px;
+  z-index: 3;
+  opacity: 0;
+}
+
+.memory {
+  position: relative;
+  display: block;
+  margin: 170px auto;
+}
+
+.cover {
+  position: absolute;
+  width: 100px;
+  height: 140px;
+  background: linear-gradient(to bottom,  #d4ffd4 10%, #000 99%); 
+  top: -150px;
+  left: -300px;
+  opacity: 0;
+  z-index: 2;
+  border-radius: 5px;
+}
+
+.memory .title_card {
+  position: absolute;
+  display: inline-block;
+  height: auto;
+  width: 100px;
+  top: -150px;
+  left: -300px;
+}
+
+h2 {
+  font-size: 3rem;
+  color: #fff;
+  text-align: center;
+}
+
+h3, label {
+  font-size: 1.6rem;
+  display: inline-block;
+  margin: 100px 10px 15px 10px;
+  font-weight: bold;
+}
+
+h3 {
+  margin: 15px 10px;
+}
+
+.tab,
+.hide {
+  display: inline-block;
+  margin: 10px 0 0 15px;
+  padding: 10px 10px 20px 10px;
+  border-radius: 10px 10px 0 0;
+  vertical-align: top;
+}
+
+a {
+  text-decoration: none;
+}
+
+.hide {
+  background-color:#3b5e3b; 
+}
+
+ul {
+  margin: -5px 10px 20px 10px;
+  padding: 15px 0;
+  background-color: #3b5e3b;
+  border-radius: 10px;
+  display: none;
+}
+
+.list {
+  display: block;
+}
+
+li {
+  list-style-type: disc;
+  margin-left: 60px;
+  color: #fff;
+  padding: 5px;
+}
+
+select, button {
+  height: 28px;
+  width: 80px;
+  margin-top: -10px;
+  vertical-align: middle;
+  border-radius: 5px;
+  font-size: 12px;
+}
+
+select {
+  width: 150px;
+}
+
+button {
+  display: none;
+}
+
+#game_board {
+  width: 1240px;
+  background-color: #619a61;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-content: flex-start;
+  opacity: 0;
+}
+
+.shade {
+  width: 100px;
+  height: 139px;
+  margin: 13px 25.5px;
+  border: 2px solid #619a61;
+  border-radius: 7px;
+  padding: 0;
+  background: repeating-linear-gradient(-45deg,
+  #fff,
+  #fff 10px,
+  #8EDEFC 10px,
+  #8EDEFC 20px);
+}
+
+.playing_card {
+  width: 100px;
+  height: auto;
+  opacity: 0;
+}
+
+.uncovered {
+  opacity: 1;
+}
+
+#guesses,
+#pairs {
+  float: left;
+  margin: 20px 20px 0 20px;
+  padding: 10px 15px 20px 15px;
+  border-radius: 10px 10px 0 0;
+  color: #fff;
+  font-size: 24px;
+  opacity: 0;
+  background-color: #3b5e3b;
+}
+
+footer {
+  margin: 200px auto 20px auto;
+  text-align: center;
+}
